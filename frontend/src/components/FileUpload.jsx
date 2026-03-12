@@ -44,7 +44,8 @@ export default function FileUpload({ onAnalysisComplete, setLoading, setError })
 
         try {
             // Analyze directly
-            const response = await fetch('http://127.0.0.1:8000/analyze', {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000'
+            const response = await fetch(`${backendUrl}/analyze`, {
                 method: 'POST',
                 body: formData,
             })
